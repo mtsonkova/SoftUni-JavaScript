@@ -5,7 +5,7 @@ function solveAges(num) {
     } else if (num >= 3 && num <= 13) {
         result = 'child'
     } else if (num >= 14 && num <= 19) {
-        result = 'teenager';
+        result = 'teenager'; 
     } else if (num >= 20 && num <= 65) {
         result = 'adult';
     } else if (num >= 66) {
