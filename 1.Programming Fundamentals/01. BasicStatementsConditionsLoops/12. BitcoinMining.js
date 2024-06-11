@@ -1,6 +1,6 @@
 function solveBitcoinMining(arr) {
     let totalAmountOfGold = 0;
-    let dayCounter = 1;
+    let dayCounter = 0;
     let money = 0;
     let pricePerBitcoin = 11949.16;
     let bitcoins = 0;
@@ -16,28 +16,32 @@ function solveBitcoinMining(arr) {
         }
         money = totalAmountOfGold * 67.51;
 
-        while (money < 11949.16) {
-            if (money >= 11949.16) {
+
+        if (money >= 11949.16) {
+            money -= 11949.16;
+            bitcoins++; 
+            if(dayFirstBitCoinBought == 0) {
                 dayFirstBitCoinBought = dayCounter;
             }
         }
 
+
     }
 
     let remainigMoney = 0;
-    bitcoins = Math.round(money / pricePerBitcoin);
+    bitcoins = Math.ceil(money / pricePerBitcoin);
     if (bitcoins == 0) {
         remainigMoney = money;
         console.log('Bought bitcoins: ' + bitcoins);
-        console.log('Left money: '+ remainigMoney.toFixed(2) + 'lv.');
+        console.log('Left money: ' + remainigMoney.toFixed(2) + ' lv.');
     } else {
-        remainigMoney = money - (bitcoins * pricePerBitcoin);
+        remainigMoney = (totalAmountOfGold * 67.51) - (bitcoins * pricePerBitcoin);
         console.log('Bought bitcoins: ' + bitcoins);
         console.log('Day of the first purchased bitcoin: ' + dayFirstBitCoinBought);
-        console.log('Left money: '+ remainigMoney.toFixed(2) + 'lv.');
+        console.log('Left money: ' + remainigMoney.toFixed(2) + ' lv.');
     }
 
-    
+
 
 
 }
