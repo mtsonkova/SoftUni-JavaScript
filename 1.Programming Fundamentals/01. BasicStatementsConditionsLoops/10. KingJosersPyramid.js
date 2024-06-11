@@ -8,30 +8,6 @@ function solveKingJoserPyramid(base, increment) {
     let stepPerimeter = 0;
     let totalArea = 0;
 
-
-    /*
-    for (let i = base; i > 0; i -= 2) {
-        stepCounter++;
-        let current = i;
-        stepArea = ((current - 2) * (current - 2)) * increment;
-        stepPerimeter = (current * 4) - 4;
-        if (i - 2 <= 0) {
-            if(stepArea === 0) {
-                gold += stepPerimeter;
-            }
-            gold += stepArea;
-        } else {
-            stones += stepArea;
-            if (stepCounter % 5 == 0) {
-                lapisLazuli += stepPerimeter;
-            } else {
-                marbles += stepPerimeter;
-            }
-        }
-    }
-
-    */
-
     for (let i = base; i > 0; i -= 2) {
         stepCounter++;
         let current = i;
