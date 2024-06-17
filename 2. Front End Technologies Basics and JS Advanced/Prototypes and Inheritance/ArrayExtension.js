@@ -5,7 +5,7 @@
 
     Array.prototype.skip = function(n) {
         if(n <= 0 || isNaN(n) || Number.isInteger(n) === false) {
-            throw new TypeError('N must be an integer')
+            throw new Error('N must be an integer')
         }
         let result = [];
         for(let i = n; i <= this.length - 1; i++) {
@@ -47,3 +47,4 @@
     console.log(arr.take(3));
     console.log(arr.sum());
     console.log(arr.average().toFixed(2));
+    console.log(arr.skip(-2));
