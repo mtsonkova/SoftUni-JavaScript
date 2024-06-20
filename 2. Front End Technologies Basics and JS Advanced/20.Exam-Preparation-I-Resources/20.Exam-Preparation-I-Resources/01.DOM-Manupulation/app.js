@@ -34,13 +34,15 @@ function solve() {
       return;
     }
 
+    debugger;
     // fill the snowman object with data
     snowman.name = snowmanName.value;
     snowman.height = snowmanHeight.value;
     snowman.location = snowmanLocation.value;
     snowman.creator = snowmanCreator.value;
     snowman.specialAttribute = snowmanSpecialAttribute.value;
-
+    
+   
     // create article container
 
     let snowmanInfoLi = document.createElement('li');
@@ -60,7 +62,7 @@ function solve() {
     creatorParagraph.textContent = `Creator: ${snowman.creator}`;
     snowmanInfoArticle.append(creatorParagraph);
     let attributeParagraph = document.createElement('p');
-    attributeParagraph.textContent = `Attribute: ${snowman.attribute}`;
+    attributeParagraph.textContent = `Attribute: ${snowman.specialAttribute}`;
     snowmanInfoArticle.append(attributeParagraph);
     snowmanInfoLi.append(snowmanInfoArticle);
     
@@ -68,9 +70,11 @@ function solve() {
     // create btns container
     let btnContainer = document.createElement('div');
     let btnEdit = document.createElement('button');
+    btn.setAttribute('class', 'edit-button');
     btnEdit.textContent = 'Edit';
 
     let btnNext = document.createElement('button');
+    btnNext.setAttribute('class', 'next-button');
     btnNext.textContent = 'Next';
 
     btnContainer.append(btnEdit);
@@ -90,6 +94,57 @@ function solve() {
     addBtn.disabled = 'true';
 
 
+    // write Edit btn functionality
+
+    btnEdit.addEventListener('click', editFunction);
+
+    function editFunction() {
+      // remove the li paragraph from the ul
+
+      snowmanPreviewUL.removeChild(snowmanInfoLi);
+      addBtn.disabled = false;
+
+      snowmanName.value = snowman.name;
+      snowmanHeight.value = snowman.height;
+      snowmanLocation.value = snowman.location;
+      snowmanCreator.value = snowman.creator
+      snowmanSpecialAttribute.value = snowman.specialAttribute;
+    }
+
+    // write Next button functionality
+    btnNext.addEventListener('click', nextFunction);
+    
+    function nextFunction() {
+      //delete li element from snowman preview
+      snowmanPreviewUL.removeChild(snowmanInfoLi);
+
+      // create article container
+
+    let snowmanListLi = document.createElement('li');
+    let snowmanListArticle = document.createElement('article');
+    //fill the article with the snowman data
+
+    let nameParagraph = document.createElement('p');
+    nameParagraph.textContent = `Name: ${snowman.name}`;
+    snowmanListArticle.append(nameParagraph);
+    let heightParagraph = document.createElement('p');
+    heightParagraph.textContent = `Height: ${snowman.height}`;
+    snowmanListArticle.append(heightParagraph);
+    let locationParagraph = document.createElement('p');
+    locationParagraph.textContent = `Location: ${snowman.location}`;
+    snowmanListArticle.append(locationParagraph);
+    let creatorParagraph = document.createElement('p');
+    creatorParagraph.textContent = `Creator: ${snowman.creator}`;
+    snowmanListArticle.append(creatorParagraph);
+    let attributeParagraph = document.createElement('p');
+    attributeParagraph.textContent = `Attribute: ${snowman.specialAttribute}`;
+    snowmanListArticle.append(attributeParagraph);
+    snowmanListLi.append(snowmanListArticle);
+    let sendBtn = document.createElement('button');
+    sendBtn.setAttribute('class', 'send-btn');
+
+
+    }
   }
 }
 
