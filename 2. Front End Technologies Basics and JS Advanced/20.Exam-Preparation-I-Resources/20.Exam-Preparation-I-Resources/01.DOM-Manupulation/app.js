@@ -5,6 +5,7 @@ function solve() {
 
   // find all elements
 
+  let bodyElement = document.querySelector('body');
   let mainElement = document.getElementById('hero');
   let backgroundImg = document.getElementById('back-img');
   let snowmanPreviewUL = document.querySelector('.snowman-preview');
@@ -23,6 +24,7 @@ function solve() {
 
   addBtn.addEventListener('click', addFunction);
 
+  // add Btn
   function addFunction(event) {
     event.preventDefault();
 
@@ -34,7 +36,6 @@ function solve() {
       return;
     }
 
-    debugger;
     // fill the snowman object with data
     snowman.name = snowmanName.value;
     snowman.height = snowmanHeight.value;
@@ -46,6 +47,7 @@ function solve() {
     // create article container
 
     let snowmanInfoLi = document.createElement('li');
+    snowmanInfoLi.setAttribute('class', 'snowman-info');
     let snowmanInfoArticle = document.createElement('article');
     //fill the article with the snowman data
 
@@ -69,8 +71,9 @@ function solve() {
 
     // create btns container
     let btnContainer = document.createElement('div');
+    btnContainer.setAttribute('class', 'btn-container');
     let btnEdit = document.createElement('button');
-    btn.setAttribute('class', 'edit-button');
+    btnEdit.setAttribute('class', 'edit-button');
     btnEdit.textContent = 'Edit';
 
     let btnNext = document.createElement('button');
@@ -122,6 +125,7 @@ function solve() {
 
     let snowmanListLi = document.createElement('li');
     let snowmanListArticle = document.createElement('article');
+    snowmanListArticle.setAttribute('class', 'snowman-content'); 
     //fill the article with the snowman data
 
     let nameParagraph = document.createElement('p');
@@ -139,12 +143,34 @@ function solve() {
     let attributeParagraph = document.createElement('p');
     attributeParagraph.textContent = `Attribute: ${snowman.specialAttribute}`;
     snowmanListArticle.append(attributeParagraph);
-    snowmanListLi.append(snowmanListArticle);
     let sendBtn = document.createElement('button');
     sendBtn.setAttribute('class', 'send-btn');
+    sendBtn.textContent = 'Send';
 
+    snowmanListArticle.append(sendBtn);
+    snowmanListLi.append(snowmanListArticle);
+    snowListUl.append(snowmanListLi);
 
+    sendBtn.addEventListener('click', sendFunction);
+    function sendFunction() {
+    mainElement.remove();
+      //mainElement.hidden = true;
+     
+      backgroundImg.hidden = false;
+      let backBtn = document.createElement('button');
+      backBtn.setAttribute('class', 'back-btn');
+      backBtn.textContent = 'Back';
+      bodyElement.appendChild(backBtn);
+
+      backBtn.addEventListener('click', backFunction);
+
+      function backFunction() {
+       window.location.reload();
+      }
     }
+    }
+
+    
   }
 }
 
