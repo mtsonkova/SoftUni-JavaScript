@@ -69,10 +69,3 @@ class HomeRenovation {
         }
     }
 }
-
-
-const renovation = new HomeRenovation(10000);
-console.log(renovation.addTask("Paint walls", 1500, 2)); 
-console.log(renovation.addTask("Install new windows", 5000, 1)); 
-console.log(renovation.markTaskAsCompleted("Paint walls")); 
-console.log(renovation.renovationSummary());
